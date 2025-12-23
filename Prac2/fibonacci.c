@@ -31,10 +31,9 @@ int fib_rec_142(int n) {
     }
 }
 
-
 int main() {
     int n;
-    printf("Enter Number to find Fibonacci Value: ");
+    printf("\nEnter Number to find Fibonacci Value: ");
     scanf("%d", &n);
     int result_ite = fib_ite_142(n);
     printf("\n------------------------------------------");
