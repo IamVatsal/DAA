@@ -4,13 +4,13 @@ int count_ite = 0;
 int count_rec = 0;
 
 int fib_ite_142(int n) {
-    if (n == 0 || n == 1) {
+    if (n <= 1) {
         count_ite++;
         return n;
     }
     else {
         int t1 = 0, t2 = 1, nextTerm;
-        for (int i = 1; i < n; ++i) {
+        for (int i = 1; i <  n; ++i) {
             count_ite++;
             nextTerm = t1 + t2;
             t1 = t2;
@@ -21,11 +21,12 @@ int fib_ite_142(int n) {
 }
 
 int fib_rec_142(int n) {
-    count_rec++;
-    if (n == 0 || n == 1) {
+    if (n <= 1) {
+        count_rec++;
         return n;
     }
     else {
+        count_rec++;
         return fib_rec_142(n - 1) + fib_rec_142(n - 2);
     }
 }

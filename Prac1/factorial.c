@@ -38,6 +38,5 @@ int main(){
     printf("\nFactorial of Number %d is: %d", n, result_rec);
     printf("\nCount of Step of Algorithm is : %d", count_rec);
     printf("\n------------------------------------------");
-    fact_i(n);
-    
+    return 0;  
 }

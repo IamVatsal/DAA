@@ -4,35 +4,42 @@ int count_ite = 0;
 int count_rec = 0;
 int count_eq = 0;
 
-int sum_i_142(int n){
+int sum_i_142(int n) {
     int sum = 0;
-    for(int i = 1; i <= n; i++){
-        sum += i;
+    for (int i = 1; i <= n; i++) {
         count_ite++;
+        sum += i;
     }
     return sum;
 }
 
-int sum_e_142(int n){
-    int count = 0, sum = 0;
-    sum = ( n / 2 ) * ( n + 1 );
+int sum_e_142(int n) {
+    int sum = 1;
+    sum = (n * (n + 1)) / 2;
     count_eq++;
     return sum;
 }
 
-int sum_r_142(int n){
-    if (n != 0){
+int sum_r_142(int n) {
+    if (n == 0) {
         count_rec++;
-        return n + sum_r(n - 1);
-    }else{
-        return n;
+        return 0;
+    }
+    else
+    if (n == 1) {
+        count_rec++;
+        return 1;
+    }
+    else {
+        count_rec++;
+        return n + sum_r_142(n - 1);
     }
 }
 
-int main(){
+int main() {
     int n;
     printf("Give Me Number To Sum of Numbers from 1 to N You want Sum of: ");
-    scanf("%d",&n);
+    scanf("%d", &n);
     int result_ite = sum_i_142(n);
     printf("\n------------------------------------------");
     printf("\nEnroll Number: 142");
