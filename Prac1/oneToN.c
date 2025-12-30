@@ -21,14 +21,9 @@ int sum_e_142(int n) {
 }
 
 int sum_r_142(int n) {
-    if (n == 0) {
+    if (n == 0 || n == 1) {
         count_rec++;
-        return 0;
-    }
-    else
-    if (n == 1) {
-        count_rec++;
-        return 1;
+        return n;
     }
     else {
         count_rec++;
