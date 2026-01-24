@@ -6,7 +6,7 @@ int count_steps_insertion = 0;
 int count_steps_selection = 0;
 int count_steps_quick = 0;
 int count_steps_merge = 0;
-
+int count_steps_randomized_quick = 0;
 
 // Utility function to print array
 void printArray(int arr[], int n) {
@@ -154,15 +154,36 @@ void mergeSort(int arr[], int l, int r) {
     }
 }
 
+// 6) RANDOMIZED QUICK SORT
+int partition_random(int arr[], int low, int high) {
+    int randomIndex = low + rand() % (high - low + 1);
+    int temp = arr[randomIndex];
+    arr[randomIndex] = arr[high];
+    arr[high] = temp;
+    return partition(arr, low, high);
+}
+
+int randomized_quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        count_steps_randomized_quick++;
+        int pi = partition_random(arr, low, high);
+
+        randomized_quickSort(arr, low, pi - 1);
+        randomized_quickSort(arr, pi + 1, high);
+    }
+    return 0;
+}
 
 int main() {
+    FILE *fp;
+    fp = fopen("arr.txt", "r");
     int n = 0;
 
-    scanf("%d", &n);
+    fscanf(fp, "%d", &n);
 
     int* array = (int*)malloc(n * sizeof(int));
     for (int i = 0; i < n; i++) {
-        scanf("%d", &array[i]);
+        fscanf(fp, "%d", &array[i]);
     }
 
     int* arr = (int*)malloc(n * sizeof(int));
@@ -223,6 +244,14 @@ int main() {
     printArray(a5, n);
     printf("Number of Steps: %d\n", count_steps_merge);
 
+    int* a6 = (int*)malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++) {
+        a6[i] = array[i];
+    }
+    randomized_quickSort(a6, 0, n - 1);
+    printf("Randomized Quick Sort: ");
+    printArray(a6, n);
+    printf("Number of Steps: %d\n", count_steps_randomized_quick);
 
     return 0;
 }
