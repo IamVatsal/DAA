@@ -36,7 +36,7 @@ int linear_search(int arr[], int size, int target) {
 
 int main() {
     FILE *fp;
-    fp = fopen("arr.txt", "r");
+    fp = fopen("arr_sorted.txt", "r");
     int size = 0;
     int target = 0;
 
