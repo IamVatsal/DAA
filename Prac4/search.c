@@ -36,16 +36,16 @@ int linear_search(int arr[], int size, int target) {
 
 int main() {
     FILE *fp;
-    fp = fopen("arr_sorted.txt", "r");
+    fp = freopen("arr_sorted.txt", "r", stdin);
     int size = 0;
     int target = 0;
 
-    fscanf(fp, "%d", &size);
-    fscanf(fp, "%d", &target);
+    scanf("%d", &size);
+    scanf("%d", &target);
     
     int* array = (int*)malloc(size * sizeof(int));
     for (int i = 0; i < size; i++) {
-        fscanf(fp, "%d", &array[i]);
+        scanf("%d", &array[i]);
     }
     fclose(fp);
     // Linear Search
@@ -60,14 +60,14 @@ int main() {
     free(array);
 
     // Binary Search
-    fp = fopen("arr_sorted.txt", "r");
+    fp = freopen("arr_sorted.txt", "r", stdin);
 
-    fscanf(fp, "%d", &size);
-    fscanf(fp, "%d", &target);
+    scanf("%d", &size);
+    scanf("%d", &target);
     
     array = (int*)malloc(size * sizeof(int));
     for (int i = 0; i < size; i++) {
-        fscanf(fp, "%d", &array[i]);
+        scanf("%d", &array[i]);
     }
     fclose(fp);
     result = binary_search(array, size, target);

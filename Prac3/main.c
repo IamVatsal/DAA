@@ -187,14 +187,14 @@ int randomized_quickSort(int arr[], int low, int high) {
 
 int main() {
     FILE *fp;
-    fp = fopen("arr2.txt", "r");
+    fp = freopen("arr2.txt", "r", stdin);
     int n = 0;
 
-    fscanf(fp, "%d", &n);
+    scanf("%d", &n);
 
     int* array = (int*)malloc(n * sizeof(int));
     for (int i = 0; i < n; i++) {
-        fscanf(fp, "%d", &array[i]);
+        scanf("%d", &array[i]);
     }
 
     int* arr = (int*)malloc(n * sizeof(int));
