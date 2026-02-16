@@ -1,13 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int count_countingSort = 0;
+int count_maxElement = 0;
+
 int maxElement(int arr[], int size) {
     int max = arr[0];
     for (int i = 1; i < size; i++) {
+        count_countingSort++;
         if (arr[i] > max) {
             max = arr[i];
         }
     }
+    count_maxElement = max;
     return max;
 }
 
@@ -29,11 +34,13 @@ int countingSort(int arr[], int size) {
 
     // Store count (Frequency) of each element
     for (int i = 0; i < size; i++) {
+        count_countingSort++;
         count[arr[i]]++;
     }
 
     // prefix sum of count array
     for (int i = 1; i <= max; i++) {
+        count_countingSort++;
         count[i] += count[i - 1];
     }
 
@@ -42,6 +49,7 @@ int countingSort(int arr[], int size) {
 
     // To make it stable we are running the loop from size-1 to 0
     for (int i = size - 1; i >= 0; i--) {
+        count_countingSort++;
         ans[count[arr[i]] - 1] = arr[i];
         count[arr[i]]--;
     }
@@ -66,5 +74,8 @@ int main(){
     for (int i = 0; i < size; i++) {
         printf("%d ", arr[i]);
     }
+    printf("\nSize of input: %d", size);
+    printf("\nMax Element: %d", count_maxElement);
+    printf("\nCount: %d\n", count_countingSort);
     return 0;
 }
