@@ -51,14 +51,12 @@ int main() {
 
     printf("-- Coin Change Problem ---\n");
     printf("Minimum coins needed: %d\n", min_coins);
-    printf("Coin values: ");
+    printf("Coin Used: ");
     for (int i = 0; i < n; i++) {
-        printf("%d ", coins[i]);
+        printf("%d : %d", coins[i], coins_used[i]);
+        if (i < n - 1) {
+            printf(", ");
+        }
     }
-    printf("\nCoins used: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", coins_used[i]);
-    }
-    printf("\n");
     return 0;
 }
